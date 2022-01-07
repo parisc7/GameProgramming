@@ -6,16 +6,25 @@ public class PlayerController : MonoBehaviour {
 
 	public float MovementSpeed;
 	public float jumpForce;
-	//public Text messageText;
+	public Text countText;
+	public GameObject completeLevelUI;
 
 
 	private Rigidbody2D rb;
+	private int count;
 
 	
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		count = 0;
+		SetCountText();
 		//messageText.text = "";
+	}
+
+	public void CompleteLevel()
+	{
+		completeLevelUI.SetActive(true);
 	}
 
 	void Update ()
@@ -31,18 +40,30 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	/*void OnTriggerEnter(Collider other) 
+	void OnTriggerEnter(Collider other) 
 	{
-		if (other.gameObject.CompareTag ("Pick Up"))
+		if (other.gameObject.CompareTag ("Coin"))
 		{
 			
 			other.gameObject.SetActive (false);
-			count++;
+			count = count + 100;
 			SetCountText ();
-			if(count >= 8)
-				winText.text = "You Win!";
+			
+			
+			//if(count >= 8)
+			//	winText.text = "You Win!";
 		}
-	}*/
+		else if (other.gameObject.CompareTag("End"))
+		{
+			other.gameObject.SetActive(false);
+			CompleteLevel();
+		}
+	}
 
+	void SetCountText()
+	{
+		countText.text = "Score: " + count.ToString();
+
+	}
 
 }
