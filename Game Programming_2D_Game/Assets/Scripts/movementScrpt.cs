@@ -7,24 +7,26 @@ public class movementScrpt : MonoBehaviour
     public float MovementSpeed;
     public float jumpForce;
 
-    Rigidbody2D rigBod;
+
+    private Rigidbody2D rb;
 
     void Start()
     {
-        rigBod = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-   
-    void Update()
+
+    void FixedUpdate()
     {
         //movement
-        var movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSpeed;
+        var movementHorizontal = Input.GetAxis("Horizontal");
+        transform.position += new Vector3(movementHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
 
         //jumping
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(rigBod.velocity.y)< 0.001f)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Mathf.Abs(rb.velocity.y) < 0.001f)
         {
-            rigBod.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
     }
+
 }
