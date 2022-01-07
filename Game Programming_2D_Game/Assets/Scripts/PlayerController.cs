@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	//public Text messageText;
 
 
-	public Rigidbody2D rb;
+	private Rigidbody2D rb;
 
 	
 	void Start ()
