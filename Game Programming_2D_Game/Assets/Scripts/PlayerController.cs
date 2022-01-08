@@ -15,11 +15,13 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private int count;
+	private AudioSource asr;
 
-	
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		asr = GetComponent<AudioSource>();
 		count = 0;
 		SetCountText();
 		currentHealth = maxHealth;
@@ -65,8 +67,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag ("Coin"))
 		{
-			
 			other.gameObject.SetActive (false);
+			asr.Play();
 			count = count + 100;
 			SetCountText ();
 			
@@ -93,5 +95,13 @@ public class PlayerController : MonoBehaviour {
 		countText.text = "Score: " + count.ToString();
 
 	}
+
+	void Died()
+    {
+		if(currentHealth >= 0)
+        {
+			Debug.Log("DEAD");
+        }
+    }
 
 }
