@@ -40,6 +40,16 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	private void Flip()
+	{
+		
+
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
+
 	void OnTriggerEnter(Collider other) 
 	{
 		if (other.gameObject.CompareTag ("Coin"))
