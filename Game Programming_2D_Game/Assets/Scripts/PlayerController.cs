@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
 	public float jumpForce;
 	public Text countText;
 	public GameObject completeLevelUI;
+	public int maxHealth = 3;
+	public int currentHealth;
+	public HealthBar healthBar;
 
 
 	private Rigidbody2D rb;
@@ -19,12 +22,20 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		count = 0;
 		SetCountText();
-		//messageText.text = "";
+		currentHealth = maxHealth;
+		healthBar.SetMaxHealth(maxHealth);
 	}
 
 	public void CompleteLevel()
 	{
 		completeLevelUI.SetActive(true);
+	}
+
+	private void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+		healthBar.SetHealth(currentHealth);
+
 	}
 
 	void Update ()
@@ -62,6 +73,13 @@ public class PlayerController : MonoBehaviour {
 			
 			//if(count >= 8)
 			//	winText.text = "You Win!";
+		}
+		else if (other.gameObject.CompareTag("Enemy"))
+		{ 
+			//asr.Play();
+			//count = count - 500;
+			TakeDamage(1);
+			//SetCountText();
 		}
 		else if (other.gameObject.CompareTag("End"))
 		{
