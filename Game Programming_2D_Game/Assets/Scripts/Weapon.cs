@@ -25,11 +25,11 @@ public class Weapon : MonoBehaviour
         if(hitInfo)
         {
             Debug.Log(hitInfo.transform.name);
-            //Enemy enemy = hitInfo.tranform.GetComponent<Enemy>();
-          //  if (enemy != null)
-          //  {
-          //      enemy.TakeDamage();
-          //  }
+            Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+               enemy.TakeDamage(damage);
+            }
 
             Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
 
