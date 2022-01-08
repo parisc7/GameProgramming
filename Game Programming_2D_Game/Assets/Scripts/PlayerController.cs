@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	void OnTriggerEnter(Collider other) 
+	void OnTriggerEnter2D(Collider2D other) 
 	{
 		if (other.gameObject.CompareTag ("Coin"))
 		{
