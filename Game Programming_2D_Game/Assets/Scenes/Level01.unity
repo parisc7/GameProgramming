@@ -1784,7 +1784,7 @@ RectTransform:
   - {fileID: 1589833603}
   - {fileID: 1227522146}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3235,6 +3235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1922742552067239972, guid: f1faeb55e9fc44b45b2a325d2f4ad5d0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6172614617065214355, guid: f1faeb55e9fc44b45b2a325d2f4ad5d0, type: 3}
       propertyPath: m_Name
       value: Coin (5)
@@ -3615,7 +3619,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365863915
 GameObject:
