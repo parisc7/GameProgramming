@@ -124,10 +124,4 @@ public class PlayerController : MonoBehaviour {
 		RespawnUI.SetActive(true);
 	}
 
-	IEnumerator WinState()
-	{
-		yield return new WaitForSeconds(2);
-		SceneManager.LoadScene(2);
-	}
-
 }
