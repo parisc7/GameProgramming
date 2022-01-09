@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public int maxHealth = 3;
 	public int currentHealth;
 	public HealthBar healthBar;
-
+	public GameObject RespawnUI;
 
 	private Rigidbody2D rb;
 	private int count;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 		completeLevelUI.SetActive(true);
 	}
 
-	private void TakeDamage(int damage)
+	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
 		healthBar.SetHealth(currentHealth);
@@ -96,12 +97,37 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	void Died()
-    {
-		if(currentHealth >= 0)
-        {
-			Debug.Log("DEAD");
-        }
-    }
+
+	void Death()
+	{
+		currentHealth = 0;
+		//isDead = true;
+		Debug.Log("Player is Dead");
+		StartCoroutine(RestartLevel());
+
+	}
+
+
+	IEnumerator RestartLevel()
+	{
+		//playerAudio.clip = deathClip;
+		//playerAudio.Play();
+		yield return new WaitForSeconds(2);
+		Respawn();
+		yield return new WaitForSeconds(2);
+		SceneManager.LoadScene(1);
+	}
+
+
+	public void Respawn()
+	{
+		RespawnUI.SetActive(true);
+	}
+
+	IEnumerator WinState()
+	{
+		yield return new WaitForSeconds(2);
+		SceneManager.LoadScene(2);
+	}
 
 }

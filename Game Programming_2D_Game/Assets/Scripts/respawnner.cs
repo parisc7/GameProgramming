@@ -13,6 +13,7 @@ public class respawnner : MonoBehaviour
     {
         if (collision.tag =="Player")
         {
+            //PlayerController.TakeDamage(1);
             Player.transform.position = SpawnPoint.transform.position;
         }
     }
