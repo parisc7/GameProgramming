@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 			TakeDamage(1);
 			//SetCountText();
 		}
-		else if (other.gameObject.CompareTag("End"))
+		else if (other.gameObject.CompareTag("FinishLevel"))
 		{
 			other.gameObject.SetActive(false);
 			CompleteLevel();
