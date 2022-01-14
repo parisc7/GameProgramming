@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
 		transform.position += new Vector3(movementHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
 
 		//jumping
-		if (Input.GetKeyDown(KeyCode.UpArrow) && Mathf.Abs(rb.velocity.y) < 0.001f)
+		if (Input.GetKeyDown(KeyCode.W) && Mathf.Abs(rb.velocity.y) < 0.001f)
 		{
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
