@@ -143,7 +143,6 @@ GameObject:
   - component: {fileID: 4541648601496452872}
   - component: {fileID: 7310639518383356047}
   - component: {fileID: 2640076574125229774}
-  - component: {fileID: 7189025068074597435}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -282,6 +281,10 @@ MonoBehaviour:
   jumpForce: 15
   countText: {fileID: 0}
   completeLevelUI: {fileID: 0}
+  maxHealth: 3
+  currentHealth: 0
+  healthBar: {fileID: 0}
+  RespawnUI: {fileID: 0}
 --- !u!114 &2640076574125229774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,23 +301,6 @@ MonoBehaviour:
   damage: 40
   impactEffect: {fileID: 1473625048454486, guid: e214d6f9315bc484a9e3eacc4277e3ad, type: 3}
   lineRenderer: {fileID: 0}
---- !u!114 &7189025068074597435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4541648601496452873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc1fdfbffe42c547bbf9c6dd0c63051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  life: 3
 --- !u!1 &4541648602258642067
 GameObject:
   m_ObjectHideFlags: 0
