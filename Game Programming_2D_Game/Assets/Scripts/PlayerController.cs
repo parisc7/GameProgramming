@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float MovementSpeed;
 	public float jumpForce;
 	public Text countText;
-	public GameObject completeLevelUI;
+	public GameObject CompleteLevelUI;
 	public int maxHealth = 3;
 	public int currentHealth;
 	public HealthBar healthBar;
@@ -18,31 +18,52 @@ public class PlayerController : MonoBehaviour {
 	private int count;
 	private AudioSource asr;
 
+	bool isDead;                                                // Whether the player is dead.  
+	bool damaged;                                              // True when the player gets damaged.
+
 
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		asr = GetComponent<AudioSource>();
 		count = 0;
-		SetCountText();
+		//SetCountText();
 		currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 	}
 
 	public void CompleteLevel()
 	{
-		completeLevelUI.SetActive(true);
+		CompleteLevelUI.SetActive(true);
 	}
 
 	public void TakeDamage(int damage)
 	{
-		currentHealth -= damage;
-		healthBar.SetHealth(currentHealth);
-
+		if (currentHealth > 0)
+		{
+			if (damage >= currentHealth)
+			{
+				damaged = true;
+				Death();
+				isDead = true;
+			}
+			else
+			{
+				damaged = true;
+				currentHealth -= damage;
+				healthBar.SetHealth(currentHealth);
+			}
+		}
 	}
 
 	void Update ()
 	{
+
+		if (currentHealth < 0)
+		{
+			currentHealth = 0;
+		}
+
 		//movement
 		var movementHorizontal = Input.GetAxis("Horizontal");
 		transform.position += new Vector3(movementHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
@@ -54,10 +75,8 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void Flip()
+    private void Flip()
 	{
-		
-
 		// Multiply the player's x local scale by -1.
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
@@ -72,39 +91,39 @@ public class PlayerController : MonoBehaviour {
 			asr.Play();
 			count = count + 100;
 			SetCountText ();
-			
-			
-			//if(count >= 8)
-			//	winText.text = "You Win!";
 		}
 		else if (other.gameObject.CompareTag("Enemy"))
 		{ 
 			//asr.Play();
-			//count = count - 500;
+			count = count - 100;
 			TakeDamage(1);
-			//SetCountText();
+			SetCountText();
 		}
 		else if (other.gameObject.CompareTag("FinishLevel"))
 		{
 			other.gameObject.SetActive(false);
 			CompleteLevel();
 		}
+		else if (other.gameObject.CompareTag("GameWon"))
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		}
 	}
 
 	void SetCountText()
 	{
 		countText.text = "Score: " + count.ToString();
-
 	}
 
 
 	void Death()
 	{
-		currentHealth = 0;
-		//isDead = true;
-		Debug.Log("Player is Dead");
-		StartCoroutine(RestartLevel());
-
+		{ 
+			currentHealth = 0;
+			isDead = true;
+			Debug.Log("Player is Dead");
+			StartCoroutine(RestartLevel());
+		}
 	}
 
 
@@ -112,10 +131,8 @@ public class PlayerController : MonoBehaviour {
 	{
 		//playerAudio.clip = deathClip;
 		//playerAudio.Play();
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 		Respawn();
-		yield return new WaitForSeconds(2);
-		SceneManager.LoadScene(1);
 	}
 
 
