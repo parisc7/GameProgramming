@@ -3881,6 +3881,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1061808772 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4541648601496452869, guid: 84e2e820b8c949b4387ca76f7e20d211, type: 3}
+  m_PrefabInstance: {fileID: 1061808764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1087044388
 GameObject:
   m_ObjectHideFlags: 0
@@ -13688,7 +13693,7 @@ GameObject:
   - component: {fileID: 2016307458}
   m_Layer: 0
   m_Name: MainCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13726,7 +13731,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -13752,7 +13757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016307454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 652.3, y: 315.5, z: -10.6}
+  m_LocalPosition: {x: 652.3, y: 315.5, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13770,6 +13775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de53e1a1b40eec84782023b13d613b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 1061808772}
+  offset: {x: 0, y: 0, z: -20}
 --- !u!1001 &2023509617
 PrefabInstance:
   m_ObjectHideFlags: 0
