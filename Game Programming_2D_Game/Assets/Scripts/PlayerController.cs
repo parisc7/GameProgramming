@@ -64,8 +64,6 @@ public class PlayerController : MonoBehaviour {
 			currentHealth = 0;
 		}
 
-
-
 		//movement
 		var movementHorizontal = Input.GetAxis("Horizontal");
 		transform.position += new Vector3(movementHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
