@@ -9,4 +9,9 @@ public class RestartLevel : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void RestartGameOverLevel2()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
