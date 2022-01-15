@@ -68,6 +68,12 @@ public class PlayerController : MonoBehaviour {
 		var movementHorizontal = Input.GetAxis("Horizontal");
 		transform.position += new Vector3(movementHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
 
+		//rotation
+		if (!Mathf.Approximately(0, movementHorizontal))
+		{
+			transform.rotation = movementHorizontal > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
+		}
+
 		//jumping
 		if (Input.GetKeyDown(KeyCode.W) && Mathf.Abs(rb.velocity.y) < 0.001f)
 		{
