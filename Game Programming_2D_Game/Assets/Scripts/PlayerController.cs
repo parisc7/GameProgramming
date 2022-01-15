@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour 
+{
+	//used for movement(in void Update()):
 	public float MovementSpeed;
 	public float jumpForce;
+	private Rigidbody2D rb;
+
 	public Text countText;
 	public GameObject CompleteLevelUI;
 	public int maxHealth = 3;
@@ -14,13 +17,12 @@ public class PlayerController : MonoBehaviour {
 	public HealthBar healthBar;
 	public GameObject RespawnUI;
 
-	private Rigidbody2D rb;
+	
 	private int count;
 	private AudioSource asr;
 
 	bool isDead;                                                // Whether the player is dead.  
 	bool damaged;                                              // True when the player gets damaged.
-
 
 	void Start ()
 	{
@@ -58,7 +60,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Update ()
 	{
-
 		if (currentHealth < 0)
 		{
 			currentHealth = 0;
@@ -79,14 +80,6 @@ public class PlayerController : MonoBehaviour {
 		{
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
-	}
-
-    private void Flip()
-	{
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
