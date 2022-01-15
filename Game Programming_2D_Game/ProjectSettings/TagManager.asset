@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - Coin
   - FinishLevel
-  - GameWon
   layers:
   - Default
   - TransparentFX

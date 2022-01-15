@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leval02.unity
     guid: 355d11bcdb7a67549ade1d00308cc99a
-  - enabled: 1
-    path: Assets/Scenes/GameWon.unity
-    guid: 4f9955717b57fc142b10bc2b817dfeb6
   m_configObjects: {}
