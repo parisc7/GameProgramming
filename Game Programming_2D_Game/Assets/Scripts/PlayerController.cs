@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
 	public float jumpForce;
 	public Text countText;
 	public GameObject CompleteLevelUI;
-	public GameObject GameWonUI;
 	public int maxHealth = 3;
 	public int currentHealth;
 	public HealthBar healthBar;
@@ -36,11 +35,6 @@ public class PlayerController : MonoBehaviour {
 	public void CompleteLevel()
 	{
 		CompleteLevelUI.SetActive(true);
-	}
-
-	public void GameWon()
-	{ 
-		GameWonUI.SetActive(true);
 	}
 
 	public void TakeDamage(int damage)
@@ -114,7 +108,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if (other.gameObject.CompareTag("GameWon"))
 		{
-			GameWon();
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
 
