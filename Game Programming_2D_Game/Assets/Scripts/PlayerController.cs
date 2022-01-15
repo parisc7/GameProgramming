@@ -10,19 +10,22 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce;
 	private Rigidbody2D rb;
 
-	public Text countText;
-	public GameObject CompleteLevelUI;
+	//health bar:
 	public int maxHealth = 3;
 	public int currentHealth;
 	public HealthBar healthBar;
+
+	//user interfaces:
 	public GameObject RespawnUI;
-
+	public GameObject CompleteLevelUI; 
 	
-	private int count;
-	private AudioSource asr;
+	public Text countText; //text for the score
+	private AudioSource asr; //audio
+	
+	private bool isDead; // Whether the player is dead.
+	private bool damaged; // True when the player gets damaged.
 
-	bool isDead;                                                // Whether the player is dead.  
-	bool damaged;                                              // True when the player gets damaged.
+	private int count;
 
 	void Start ()
 	{
@@ -33,11 +36,13 @@ public class PlayerController : MonoBehaviour
 		currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 	}
+	
 
 	public void CompleteLevel()
 	{
 		CompleteLevelUI.SetActive(true);
 	}
+
 
 	public void TakeDamage(int damage)
 	{
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 	}
+
 
 	void Update ()
 	{
@@ -81,6 +87,7 @@ public class PlayerController : MonoBehaviour
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
 	}
+
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
@@ -109,6 +116,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+
 	void SetCountText()
 	{
 		countText.text = "Score: " + count.ToString();
@@ -117,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
 	void Death()
 	{
-		{ 
+		{
 			currentHealth = 0;
 			isDead = true;
 			Debug.Log("Player is Dead");
@@ -139,5 +147,4 @@ public class PlayerController : MonoBehaviour
 	{
 		RespawnUI.SetActive(true);
 	}
-
 }
