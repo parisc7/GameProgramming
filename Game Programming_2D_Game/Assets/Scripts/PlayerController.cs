@@ -3,20 +3,18 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour 
-{
-	//Movement
+public class PlayerController : MonoBehaviour {
+
 	public float MovementSpeed;
 	public float jumpForce;
-	private Rigidbody2D rb;
-
 	public Text countText;
 	public GameObject CompleteLevelUI;
 	public int maxHealth = 3;
 	public int currentHealth;
 	public HealthBar healthBar;
 	public GameObject RespawnUI;
-	
+
+	private Rigidbody2D rb;
 	private int count;
 	private AudioSource asr;
 
@@ -41,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
-<<<<<<< Updated upstream
 		if (currentHealth > 0)
 		{
 			if (damage >= currentHealth)
@@ -57,10 +54,6 @@ public class PlayerController : MonoBehaviour
 				healthBar.SetHealth(currentHealth);
 			}
 		}
-=======
-		currentHealth -= damage;
-		healthBar.SetHealth(currentHealth);
->>>>>>> Stashed changes
 	}
 
 	void Update ()
@@ -75,32 +68,20 @@ public class PlayerController : MonoBehaviour
 		var movementHorizontal = Input.GetAxis("Horizontal");
 		transform.position += new Vector3(movementHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
 
-		//rotation
-		if (!Mathf.Approximately(0, movementHorizontal))
-		{
-			transform.rotation = movementHorizontal > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
-		}
-
 		//jumping
 		if (Input.GetKeyDown(KeyCode.W) && Mathf.Abs(rb.velocity.y) < 0.001f)
 		{
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
 	}
-<<<<<<< Updated upstream
 
     private void Flip()
-=======
-	/*/
-	private void Flip()
->>>>>>> Stashed changes
 	{
 		// Multiply the player's x local scale by -1.
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	
-	/*/
+	}
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
@@ -137,19 +118,12 @@ public class PlayerController : MonoBehaviour
 
 	void Death()
 	{
-<<<<<<< Updated upstream
 		{ 
 			currentHealth = 0;
 			isDead = true;
 			Debug.Log("Player is Dead");
 			StartCoroutine(RestartLevel());
 		}
-=======
-		currentHealth = 0;
-		//isDead = true;
-		Debug.Log("Player is Dead");
-		StartCoroutine(RestartLevel());
->>>>>>> Stashed changes
 	}
 
 
