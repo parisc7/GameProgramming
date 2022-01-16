@@ -13,7 +13,7 @@ WHAT WE USED IN OUR PROJECT IS:
 Raycast for the shooting.
 Our own script for movement, and another script for the camera.
 Tilemaps and tiles to design the levels.
-Enemy, rotate, restart level, level completed and much more scripts.
+Enemy, rotate, restart level, level completed, Patrol and much more scripts.
 We designed a health bar, with its own script.
 We use collisions for the damage from enemies and collisions to collect the coins, also collision to the finish live to proceed to the next scene.
 TextMeshPro texts for better design on our menus.
