@@ -3757,6 +3757,14 @@ PrefabInstance:
       propertyPath: m_AllowDynamicResolution
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7273045285695457981, guid: 84e2e820b8c949b4387ca76f7e20d211, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273045285695457981, guid: 84e2e820b8c949b4387ca76f7e20d211, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.028497323
+      objectReference: {fileID: 0}
     - target: {fileID: 7310639518383356047, guid: 84e2e820b8c949b4387ca76f7e20d211, type: 3}
       propertyPath: GameWonUI
       value: 
@@ -13708,8 +13716,8 @@ GameObject:
   - component: {fileID: 2016307457}
   - component: {fileID: 2016307456}
   - component: {fileID: 2016307455}
-  - component: {fileID: 2016307458}
   - component: {fileID: 2016307459}
+  - component: {fileID: 2016307458}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera

@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour
 		if (!Mathf.Approximately(0, movementHorizontal))
 		{
 			transform.rotation = movementHorizontal > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
+
+			transform.Rotate(0f, 180f, 0f);
 		}
 
 		//jumping
